@@ -9,9 +9,9 @@ const BuyPage = () => {
         <h2 className="BuyPage__title">Sua Sacolis de Cervadis</h2>
       </header>
       <div className="BuyPage__products">
-        <Product />
-        <Product />
-        <Product />
+        <Product {...BEER}/>
+        <Product {...BEER}/>
+        <Product {...BEER}/>
       </div>
       <footer className="BuyPage__footer">
         <button className="btn">Confirmar Compra</button>
