@@ -21,3 +21,32 @@ body {
 ul {
   list-style: none;
 }
+
+.btn {
+  margin-right: 2rem;
+  background-color: #93e327;
+  border: 3px solid #080808;
+  color: #080808;
+  padding: 1rem 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-round {
+  font-size: 1.5rem;
+  background: none;
+  border: 2px solid #080808;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.btn-remove {
+  color: red;
+  border: none;
+}

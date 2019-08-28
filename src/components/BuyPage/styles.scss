@@ -1,0 +1,35 @@
+.BuyPage {
+  padding: 3rem;
+
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__products {
+    max-width: 80rem;
+    margin: 0 auto 3rem auto;
+  }
+}
+
+
+.Product {
+  border-top: 1px solid #080808;
+  padding: 2.5rem 2rem;
+
+  &:last-child {
+    border-bottom: 1px solid #080808;
+  }
+
+  &__actions {
+    background: pink;
+    display: flex;
+  }
+
+  &__actions-remove {
+    margin-left: 1.5rem;
+  }
+}

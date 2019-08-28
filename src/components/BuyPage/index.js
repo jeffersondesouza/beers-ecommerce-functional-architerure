@@ -1,60 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
 import "./styles.scss";
+import Product from "./Product";
 
-const BeerPage = () => {
-  const {
-    imageUrl,
-    ingredients,
-    name,
-    tagline,
-    firstBrewed,
-    description,
-    foodPairing,
-    boilVolume
-  } = BEER;
-
+const BuyPage = () => {
   return (
-    <div className="BeerPage">
-      <div className="BeerPage__picture">
-        <img
-          className="BeerPage__img"
-          src={imageUrl}
-          alt={`Imagem de uma garrafa da cerveja ${name}`}
-        />
+    <div className="BuyPage">
+      <header className="BuyPage__header">
+        <h2 className="BuyPage__title">Sua Sacolis de Cervadis</h2>
+      </header>
+      <div className="BuyPage__products">
+        <Product />
+        <Product />
+        <Product />
       </div>
-      <div className="BeerPage__summary">
-        <h2 className="BeerPage__name">{name}</h2>
-        <p className="BeerPage__tagline">{tagline}</p>
-        <p className="BeerPage__firstBrewed">Desde: {firstBrewed}</p>
-        {/* TODO: criar um conversor do volume litres para litros */}
-        <p className="BeerPage__boilVolume">
-          Volume: {boilVolume.value} {boilVolume.unit}
-        </p>
-        <p className="BeerPage__description">Descrição: {description}</p>
-        <div className="BeerPage__ingredients">
-          <h4>Ingredientes</h4>
-          {/* TODO: um conversor de Objeto para array pois igredeintes é um objeto */}
-          <div>Malt: "Maris Otter Extra Pale",</div>
-          <div>Quantidade: 3.3 kg</div>
-        </div>
-        <div className="BeerPage__foodPairing">
-          <h4>Harmonização</h4>
-          {foodPairing.map(item => (
-            <div key={item}>{item}</div>
-          ))}
-        </div>
-        <footer className="BeerPage__footer">
-          <button className="btn">Adicionar à Sacola</button>
-          <Link to="/sacola" className="BeerPage__footer-link">Ver Items da sacola</Link>
-        </footer>
-      </div>
+      <footer className="BuyPage__footer">
+        <button className="btn">Confirmar Compra</button>
+      </footer>
     </div>
   );
 };
 
-export default BeerPage;
+export default BuyPage;
 
 const BEER = {
   id: 1,
