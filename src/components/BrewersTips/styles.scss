@@ -1,0 +1,28 @@
+.BrewersTips {
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__tip {
+    font-family: serif;
+    text-align: center;
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 21;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: 600;
+
+    &::before {
+      content: '\201C';
+      position: absolute;
+      top: -10rem;
+      font-size: 25rem;
+      z-index: -1;
+      color: #dadada;
+      left: -1rem;
+    }
+  }
+}

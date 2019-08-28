@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./styles.scss";
 import DashboardCard from "../DashboardCard";
 import BeerOfMonth from "../BeerOfMonth";
+import BrewersTips from "../BrewersTips";
 
 // a Ideia é ter 3 request emapralelo com num dashboard
 const HomePage = () => {
@@ -18,7 +19,7 @@ const HomePage = () => {
           <BeerOfMonth {...BEER} />
         </DashboardCard>
         <DashboardCard title="Dica do Cervejeiris">
-          <span>{TIP}</span>
+          <BrewersTips tip={TIP} />
         </DashboardCard>
       </div>
     </section>
