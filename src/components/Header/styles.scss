@@ -1,0 +1,46 @@
+.Header {
+  background: #0a0a0a;
+  color: #fff;
+  display: flex;
+  padding: 2rem;
+
+  &__brand {
+    flex: 1;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  &__brand-logo {
+    font-size: 2rem;
+  }
+
+}
+
+.MainNav {
+
+  display: flex;
+  align-items: center;
+
+  &__Links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &__link {
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+    a {
+      font-size: 1.6rem;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  &__auth{
+    margin-left: 2rem;
+  }
+}

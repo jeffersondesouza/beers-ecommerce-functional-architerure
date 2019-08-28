@@ -1,26 +1,15 @@
 import React from "react";
-import { Redirect, Switch, Route, Link } from "react-router-dom";
+import { Redirect, Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import BuyPage from "./components/BuyPage";
 import BeerPage from "./components/BeerPage";
-
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <header>
-        <nav>
-          <Link to="/">
-            <h1>Suco de Cevadis</h1>
-          </Link>
-          <span>10</span>
-          <Link to="/cervejas">Cervejis</Link>
-          <Link to="/login">login</Link>
-          <Link to="/sacola">sacolis</Link>
-          <Link to="/login">logout</Link>
-        </nav>
-      </header>
+      <Header />
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/cervejas" />} />
         <Route exact path="/cervejas" component={HomePage} />
