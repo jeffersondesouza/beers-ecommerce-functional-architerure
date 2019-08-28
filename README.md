@@ -30,5 +30,5 @@
 store:
 - beers (beersList, selectedBeer, doLoadBeers)
 - dashboard (beerOfMonth, brewersTips, doLoad)
-- cart (products, buyHistory, doBuy)
+- shoppingCart (products, buyHistory, doBuy)
 - user (token, name, email, doeLogin, doLogout)

@@ -1,24 +1,14 @@
 import React from "react";
 import "./styles.scss";
 
+import LoginFormContainer from "../../containers/LoginFormContainer";
+
 const LoginPage = () => {
   return (
     <div className="LoginPage">
       <div>
         <h2 className="LoginPage__title">Bora entrar?</h2>
-        <form className="form">
-          <div className="form-group">
-            <label>Email</label>
-            <input className="input" />
-          </div>
-          <div className="form-group">
-            <label>Senha</label>
-            <input className="input" />
-          </div>
-          <div className="form-action">
-            <button className="btn">Fazer Login</button>
-          </div>
-        </form>
+        <LoginFormContainer />
       </div>
     </div>
   );
