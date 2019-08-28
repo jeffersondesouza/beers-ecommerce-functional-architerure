@@ -13,6 +13,13 @@
     max-width: 80rem;
     margin: 0 auto 3rem auto;
   }
+
+  &__footer {
+    margin-top: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 

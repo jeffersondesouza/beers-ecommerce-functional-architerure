@@ -5,8 +5,11 @@ const Beer = props => {
   const { id, abv, name, imageUrl, tagline } = props;
 
   return (
-    <Link to={`/cervejas/${id}`}>
-      <div className="Beer">
+    <div className="Beer">
+      <div className="Beer__add">
+        <button className="btn-round">+</button>
+      </div>
+      <Link to={`/cervejas/${id}`}>
         <picture className="Beer__picture">
           <img
             className="Beer__img"
@@ -19,8 +22,8 @@ const Beer = props => {
           <div className="Beer__tagline">{tagline}</div>
           <div className="Beer__abv">Teor: {abv}</div>
         </footer>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

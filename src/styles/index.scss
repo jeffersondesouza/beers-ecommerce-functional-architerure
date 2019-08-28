@@ -55,3 +55,18 @@ ul {
   color: red;
   border: none;
 }
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+
+  label {
+    margin-bottom: .5rem;
+  }
+}
+
+.input {
+  padding: 1rem .5rem;
+}
