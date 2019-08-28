@@ -1,0 +1,37 @@
+.Product {
+  border-top: 2px solid #080808;
+  padding: 1.5rem 2rem 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:last-child {
+    border-bottom: 2px solid #080808;
+  }
+
+
+  &__summary-name {
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-bottom: .2rem;
+  }
+
+  &__summary-tagline,
+  &__summary-abv {
+    font-size: 1.2rem;
+    color: #686868;
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__actions-remove {
+    margin-left: 1rem;
+  }
+
+  &__footer {
+    margin-top: 1rem;
+    position: relative;
+  }
+}

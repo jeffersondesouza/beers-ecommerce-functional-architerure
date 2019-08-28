@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.scss";
-import Product from "./Product";
+import Product from "../../components/Product";
 
 const BuyPage = () => {
   return (
