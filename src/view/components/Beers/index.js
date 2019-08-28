@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-import "./styles.scss";
 import Beer from "./Beer";
+import BeerFilter from "./BeerFilter";
+
 // (https://api.punkapi.com/v2/beers?page=1&per_page=10)
+
 const Beers = props => {
   const [filterQuery, setFilterQuery] = useState("");
 
@@ -12,21 +14,16 @@ const Beers = props => {
     setFilterQuery(event.target.value);
   };
 
-  const filterBy = query => beer =>
-    beer.name.toLowerCase().includes(query.toLowerCase());
+  const filterByName = query => beer => {
+    return beer.name.toLowerCase().includes(query.toLowerCase());
+  };
+
+  const renderBeer = item => <Beer key={item.id} {...item} />;
 
   return (
     <div className="Beers">
-      <div className="Beers__filter">
-        <input
-          onKeyUp={handleFilterBeers}
-          className="Beers__filter-input"
-          placeholder="Buscar por nome"
-        />
-      </div>
-      {beersList.filter(filterBy(filterQuery)).map(item => (
-        <Beer {...item} />
-      ))}
+      <BeerFilter onFilterBeers={handleFilterBeers} />
+      {beersList.filter(filterByName(filterQuery)).map(renderBeer)}
     </div>
   );
 };
