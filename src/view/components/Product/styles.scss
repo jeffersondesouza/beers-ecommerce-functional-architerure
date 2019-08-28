@@ -9,6 +9,18 @@
     border-bottom: 2px solid #080808;
   }
 
+  &__picture {
+    width: 5rem;
+    margin-right: 2rem;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__summary {
+    flex: 1;
+  }
 
   &__summary-name {
     font-weight: 600;

@@ -1,10 +1,15 @@
 import React from "react";
 
+import "./styles.scss";
+
 const Product = props => {
-  const { name, tagline, abv } = props;
+  const { name, tagline, abv, imageUrl } = props;
 
   return (
     <div className="Product">
+      <picture className="Product__picture">
+        <img className="Product__img" src={imageUrl} alt={name} />
+      </picture>
       <div className="Product__summary">
         <p className="Product__summary-name">{name}</p>
         <p className="Product__summary-tagline">{tagline}</p>

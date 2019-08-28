@@ -2,25 +2,25 @@ import React from "react";
 import "./styles.scss";
 import Product from "../../components/Product";
 
-const BuyPage = () => {
+const ShoppingCartPage = () => {
   return (
-    <div className="BuyPage">
-      <header className="BuyPage__header">
-        <h2 className="BuyPage__title">Sua Sacolis de Cervadis</h2>
+    <div className="ShoppingCartPage">
+      <header className="ShoppingCartPage__header">
+        <h2 className="ShoppingCartPage__title">Sua Sacolis de Cervadis</h2>
       </header>
-      <div className="BuyPage__products">
+      <div className="ShoppingCartPage__products">
         <Product {...BEER}/>
         <Product {...BEER}/>
         <Product {...BEER}/>
       </div>
-      <footer className="BuyPage__footer">
+      <footer className="ShoppingCartPage__footer">
         <button className="btn">Confirmar Compra</button>
       </footer>
     </div>
   );
 };
 
-export default BuyPage;
+export default ShoppingCartPage;
 
 const BEER = {
   id: 1,

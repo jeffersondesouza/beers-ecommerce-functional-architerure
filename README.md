@@ -15,14 +15,20 @@
 +---- + -- svg\
 +-- config\
 
-
-
 ## Prestar atenção
+
 - pipe
 - Maybe
 - promisify
 - objectToArray
 - arrayRoObject
 
+#######################
 
+## Modeling
 
+store:
+- beers (beersList, selectedBeer, doLoadBeers)
+- dashboard (beerOfMonth, brewersTips, doLoad)
+- cart (products, buyHistory, doBuy)
+- user (token, name, email, doeLogin, doLogout)
