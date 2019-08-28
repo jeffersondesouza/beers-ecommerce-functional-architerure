@@ -1,10 +1,9 @@
 import React from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import LoginPage from "./components/LoginPage";
-import BuyPage from "./components/BuyPage";
-import BeerPage from "./components/BeerPage";
-import Header from "./components/Header";
+
+import { HomePage, LoginPage, BuyPage, BeerPage } from "./view/pages";
+import Header from "./view/components/Header";
+
 
 function App() {
   return (

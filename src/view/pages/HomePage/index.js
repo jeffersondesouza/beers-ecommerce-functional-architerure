@@ -1,10 +1,10 @@
 import React from "react";
 
 import "./styles.scss";
-import DashboardCard from "../DashboardCard";
-import BeerOfMonth from "../BeerOfMonth";
-import BrewersTips from "../BrewersTips";
-import Beers from "../Beers";
+import Beers from "../../components/Beers";
+import DashboardCard from "../../components/DashboardCard";
+import BeerOfMonth from "../../components/BeerOfMonth";
+import BrewersTips from "../../components/BrewersTips";
 
 // a Ideia é ter 3 request emapralelo com num dashboard
 const HomePage = () => {
