@@ -27,8 +27,12 @@
 
 ## Modeling
 
-store:
+Store:
 - beers (beersList, selectedBeer, doLoadBeers)
 - dashboard (beerOfMonth, brewersTips, doLoad)
 - shoppingCart (products, buyHistory, doBuy)
 - user (token, name, email, doeLogin, doLogout)
+
+Models
+  - beer
+  
