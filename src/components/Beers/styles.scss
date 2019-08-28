@@ -1,0 +1,57 @@
+.Beers {
+  &__filter {
+    margin-bottom: 5rem;
+  }
+
+  &__filter-input {
+    border-radius: 1rem;
+    border: 2px solid #696969;
+    padding: .5rem 1.5rem;
+    width: 85%;
+    margin: 0 auto;
+    display: block;
+    outline: none;
+    height: 4rem;
+  }
+}
+
+.Beer {
+  background: #f7f7f7;
+  display: inline-block;
+  width: 25rem;
+  height: 30rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  overflow: hidden;
+
+  &__img {
+    height: 20rem;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__name,
+  &__tagline,
+  &__abv {
+    color: #686868;
+  }
+
+  &__name {
+    color: #686868;
+    font-weight: 600;
+    margin: 1rem 0 .5rem 0;
+    line-height: 1;
+  }
+
+  &__tagline {
+    line-height: 1;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  &__abv {
+    text-align: right;
+  }
+}

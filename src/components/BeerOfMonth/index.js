@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
+// (https://api.punkapi.com/v2/beers/28)
 const BeerOfMonth = props => {
-  const { id, name, imageUrl, abv } = props;
+  const { id, name, imageUrl, abv, tagline } = props;
 
   return (
     <div className="BeerOfMonth">
@@ -16,7 +17,10 @@ const BeerOfMonth = props => {
         />
       </picture>
       <footer>
-        <div className="BeerOfMonth__abv">Teor: {abv}</div>
+        <div className="BeerOfMonth__tagline">
+          <div>{tagline}</div>
+          <div className="BeerOfMonth__abv">Teor: {abv}</div>
+        </div>
         <div className="BeerOfMonth__link-wrap">
           <Link className="BeerOfMonth__link" to={`/cervejas/${id}`}>
             Detalhes

@@ -14,11 +14,18 @@
   }
 
   &__img {
-    height: 18rem;
+    height: 17rem;
+  }
+
+  &__tagline {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    color: #686868;
+    display: flex;
   }
 
   &__abv {
-    color: #686868;
+    margin-left: auto;
   }
 
   &__link-wrap {
