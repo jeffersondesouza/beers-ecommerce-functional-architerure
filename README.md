@@ -14,3 +14,12 @@
 +---- + -- videos\
 +---- + -- svg\
 +-- config\
+
+
+
+## Prestar atenção
+- pipe
+- Maybe
+- promisify
+- objectToArray
+- arrayRoObject
