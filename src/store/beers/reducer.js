@@ -17,8 +17,8 @@ const beersReducer = (state = INITIAL_STATE, action) => {
         isLoadingBeers: false,
         loadingBeersSuccess: true,
         loadingBeersFailure: false,
-        beersList: [...action.payload.beersList],
-        total: action.payload.total
+        beersList: [...action.payload],
+        total: action.payload.length
       };
 
     case Types.LOAD_BEERS_FAILURE:
@@ -27,6 +27,32 @@ const beersReducer = (state = INITIAL_STATE, action) => {
         isLoadingBeers: false,
         loadingBeersSuccess: false,
         loadingBeersFailure: true
+      };
+
+    case Types.LOAD_BEER_REQUEST:
+      return {
+        ...state,
+        isLoadingSelectedBeer: true,
+        loadingSelectedBeerSuccess: false,
+        loadingSelectedBeerFailure: false,
+        selectedBeer: {}
+      };
+
+    case Types.LOAD_BEER_SUCCESS:
+      return {
+        ...state,
+        isLoadingSelectedBeer: false,
+        loadingSelectedBeerSuccess: true,
+        loadingSelectedBeerFailure: false,
+        selectedBeer: { ...action.payload },
+      };
+
+    case Types.LOAD_BEER_FAILURE:
+      return {
+        ...state,
+        isLoadingSelectedBeer: false,
+        loadingSelectedBeerSuccess: false,
+        loadingSelectedBeerFailure: true
       };
 
     default:

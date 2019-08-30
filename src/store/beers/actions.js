@@ -15,8 +15,26 @@ const loadBeersFailure = payload => ({
   payload
 });
 
+const loadBeerRequest = payload => ({
+  type: Types.LOAD_BEER_REQUEST,
+  payload
+});
+
+const loadBeerSuccess = payload => ({
+  type: Types.LOAD_BEER_SUCCESS,
+  payload
+});
+
+const loadBeerFailure = payload => ({
+  type: Types.LOAD_BEER_FAILURE,
+  payload
+});
+
 export default {
   loadBeersRequest,
   loadBeersSuccess,
-  loadBeersFailure
+  loadBeersFailure,
+  loadBeerRequest,
+  loadBeerSuccess,
+  loadBeerFailure
 };
