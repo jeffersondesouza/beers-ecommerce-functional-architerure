@@ -8,5 +8,8 @@ const keysValuesToCamelCaseObject = originalObj => (newObj, key) => {
   return { ...newObj, [camelKey]: value };
 };
 
+
+// Para ficar melhor, o interessante é fzer uma recursão em cada objecto em busca de objetos filhos
+
 export default obj =>
   getSnackeKeysFrom(obj).reduce(keysValuesToCamelCaseObject(obj), {});

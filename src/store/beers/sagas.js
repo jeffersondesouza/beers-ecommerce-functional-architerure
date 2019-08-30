@@ -5,21 +5,14 @@ import { BeersRepository, BeersHttpMapper } from "../../models/Beers";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
 
+
+
 function* loadBeers() {
   try {
-    /*     const beers = yield HttpFetcher.request(
-      BeersRepository.loadBeers,
-      BeersHttpMapper.fromLoadBeers
-    );
- */
-    const beers = yield call(
-      HttpFetcher.request,
-      BeersRepository.loadBeers(1),
-      BeersHttpMapper.fromLoadBeers
-    );
+    const beersList = 
+      yield HttpFetcher.request(BeersRepository.loadBeers(1), BeersHttpMapper.fromLoadBeers);
 
-    console.log("beers:", beers);
-    const state = yield select(state => state);
+    yield put(action.loadBeersSuccess({ beersList }));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("error:", error);
@@ -36,3 +29,10 @@ function* rootSaga() {
 }
 
 export default rootSaga;
+/*);
+const beersList = yield call(
+  HttpFetcher.request,
+  BeersRepository.loadBeers(1),
+  BeersHttpMapper.fromLoadBeers
+);
+*/
