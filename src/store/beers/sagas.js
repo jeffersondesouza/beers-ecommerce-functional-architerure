@@ -1,19 +1,34 @@
-import { takeEvery, put, all, select } from "redux-saga/effects";
+import { takeEvery, put, all, select, call } from "redux-saga/effects";
+import Types from "./constants";
 import action from "./actions";
+import { BeersRepository, BeersHttpMapper } from "../../models/Beers";
+
+import HttpFetcher from "../../utils/http/HttpFetcher";
 
 function* loadBeers() {
   try {
-    yield select(state => state.auth.token);
+    /*     const beers = yield HttpFetcher.request(
+      BeersRepository.loadBeers,
+      BeersHttpMapper.fromLoadBeers
+    );
+ */
+    const beers = yield call(
+      HttpFetcher.request,
+      BeersRepository.loadBeers(1),
+      BeersHttpMapper.fromLoadBeers
+    );
+
+    console.log("beers:", beers);
+    const state = yield select(state => state);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("error:", error);
-    yield put(action.loadFriendsFailure({ error }));
   }
 }
 
 /* WATCHERS */
 export function* watchLoad() {
-  yield takeEvery("LOAD_FRIENDS_REQUEST", loadBeers);
+  yield takeEvery(Types.LOAD_BEERS_REQUEST, loadBeers);
 }
 
 function* rootSaga() {

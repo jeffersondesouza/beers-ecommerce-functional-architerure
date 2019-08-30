@@ -1,4 +1,9 @@
+export const LOAD_BEERS_REQUEST = "beers:LOAD_BEERS_REQUEST";
+export const LOAD_BEERS_SUCCESS = "beers:LOAD_BEERS_SUCCESS";
+export const LOAD_BEERS_FAILURE = "beers:LOAD_BEERS_FAILURE";
 
 export default {
-
+  LOAD_BEERS_REQUEST,
+  LOAD_BEERS_SUCCESS,
+  LOAD_BEERS_FAILURE
 };

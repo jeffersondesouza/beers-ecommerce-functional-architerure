@@ -3,12 +3,11 @@ import React, { useState } from "react";
 import Beer from "./Beer";
 import BeerFilter from "./BeerFilter";
 
-// (https://api.punkapi.com/v2/beers?page=1&per_page=10)
 
 const Beers = props => {
-  const [filterQuery, setFilterQuery] = useState("");
+  const { beersList, isLoadingBeers } = props;
 
-  const { beersList } = props;
+  const [filterQuery, setFilterQuery] = useState("");
 
   const handleFilterBeers = event => {
     setFilterQuery(event.target.value);
@@ -19,6 +18,10 @@ const Beers = props => {
   };
 
   const renderBeer = item => <Beer key={item.id} {...item} />;
+
+  if (isLoadingBeers) {
+    return <div className="Beers">Carregando...</div>;
+  }
 
   return (
     <div className="Beers">
