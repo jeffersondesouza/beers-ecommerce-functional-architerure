@@ -1,8 +1,8 @@
 import Types from "./constants";
 
-const loadBeersRequest = payload => ({
+const loadBeersRequest = page => ({
   type: Types.LOAD_BEERS_REQUEST,
-  payload
+  payload: page
 });
 
 const loadBeersSuccess = payload => ({

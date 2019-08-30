@@ -1,7 +1,6 @@
 const mapHttpResponse = res => res.json();
 
 const maybeMapper = httpMapper => {
-  console.log("httpMapper:", typeof httpMapper);
   const defaulMapper = res => res;
 
   return httpMapper && typeof httpMapper === "function"
@@ -9,11 +8,19 @@ const maybeMapper = httpMapper => {
     : defaulMapper;
 };
 
-const request = (requestObject, httpMapper) =>
-  fetch(requestObject.path, requestObject)
-    .then(mapHttpResponse)
-    .then(maybeMapper(httpMapper)); // lembrando aqui o ideal é aogo do tipo maybeMapper(httoMapper)
+const request = ({ requestOptions, mapResponse }) =>
+  fetch(requestOptions.path, requestOptions)
+    .then(res => res.json())
+    .then(mapResponse);
 
 export default {
   request
 };
+
+// lembrando aqui o ideal é aogo do tipo maybeMapper(httoMapper)
+/* const request = requestObject =>
+  fetch(requestObject.requestOptions.path, requestObject.requestOptions)
+    .then(mapHttpResponse)
+    .then(maybeMapper(requestObject.mapResponse));
+// lembrando aqui o ideal é aogo do tipo maybeMapper(httoMapper)
+ */

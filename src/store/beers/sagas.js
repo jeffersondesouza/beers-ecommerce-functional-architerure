@@ -5,11 +5,12 @@ import { BeersRepository, BeersHttpMapper } from "../../models/Beers";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
 
-function* loadBeers() {
+function* loadBeers({ payload }) {
   try {
+    BeersHttpMapper.fromLoadBeer = () => 1;
+
     const beersList = yield HttpFetcher.request(
-      BeersRepository.loadBeers(1),
-      BeersHttpMapper.fromLoadBeers
+      BeersRepository.loadBeers(payload)
     );
 
     yield put(action.loadBeersSuccess(beersList));

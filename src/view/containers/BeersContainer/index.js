@@ -9,7 +9,7 @@ const BeersContainer = props => {
   const { dispatchLoadBeers, isLoadingBeers, beersList } = props;
 
   useEffect(() => {
-    dispatchLoadBeers();
+    dispatchLoadBeers(1);
   }, [dispatchLoadBeers]);
 
   return (
@@ -26,7 +26,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchLoadBeers: () => dispatch(actions.beer.loadBeersRequest())
+  dispatchLoadBeers: page => dispatch(actions.beer.loadBeersRequest(page))
 });
 
 export default connect(
