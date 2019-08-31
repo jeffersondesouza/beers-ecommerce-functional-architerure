@@ -1,5 +1,5 @@
 export const ADD_PRODUCT = "shoppingCart:ADD_PRODUCT";
-export const REMOVE_PRODUCT = "shoppingCart:ADD_PRODUCT";
+export const REMOVE_PRODUCT = "shoppingCart:REMOVE_PRODUCT";
 
 export const INCREASE_PRODUCT = "shoppingCart:ADD_PRODUCT";
 export const DECREASE_PRODUCT = "shoppingCart:ADD_PRODUCT";

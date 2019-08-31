@@ -7,11 +7,17 @@ import Product from "../../components/Product";
 const ShoppingCartContainer = props => {
   const { products } = props;
 
+  const handleRemoveProduct = id => () => props.dispatchRemoveProduct(id);
+
   return (
     <>
       <div className="ShoppingCartPage__products">
         {products.map(item => (
-          <Product key={item.id} {...item} />
+          <Product
+            onRemoveProduct={handleRemoveProduct}
+            key={item.id}
+            {...item}
+          />
         ))}
       </div>
       <footer className="ShoppingCartPage__footer">
@@ -27,9 +33,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchLoadBeers: page => dispatch(actions.beer.loadBeersRequest(page)),
-  dispatchAddProduct: product =>
-    dispatch(actions.shoppingCart.addProduct(product))
+  dispatchRemoveProduct: id => dispatch(actions.shoppingCart.removeProduct(id))
 });
 
 export default connect(

@@ -3,8 +3,8 @@ import React from "react";
 import "./styles.scss";
 
 const Product = props => {
-  const { name, tagline, abv, imageUrl } = props;
-  console.log('props:', props)
+  const { id, name, tagline, abv, imageUrl, onRemoveProduct } = props;
+  console.log("props:", props);
 
   return (
     <div className="Product">
@@ -20,7 +20,10 @@ const Product = props => {
       <div className="Product__actions">
         <button className="btn-round">-</button>
         <button className="btn-round">+</button>
-        <button className="btn-round btn-remove Product__actions-remove">
+        <button
+          onClick={onRemoveProduct(id)}
+          className="btn-round btn-remove Product__actions-remove"
+        >
           X
         </button>
       </div>
