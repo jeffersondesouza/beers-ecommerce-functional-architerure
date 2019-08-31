@@ -2,57 +2,50 @@ import INITIAL_STATE from "./state";
 import Types from "./constants";
 
 const reducer = (state = INITIAL_STATE, action) => {
+  console.log("action:", action);
   switch (action.type) {
-    case Types.LOAD_BEERS_REQUEST:
+    case Types.LOGIN_REQUEST:
       return {
         ...state,
-        isLoadingBeers: true,
-        loadingBeersSuccess: false,
-        loadingBeersFailure: false
+        profile: INITIAL_STATE.profile,
+        token: "",
+        isLoggedIn: false,
+        isLoggingIn: true
       };
 
-    case Types.LOAD_BEERS_SUCCESS:
+    case Types.LOGIN_SUCCESS:
       return {
         ...state,
-        isLoadingBeers: false,
-        loadingBeersSuccess: true,
-        loadingBeersFailure: false,
-        beersList: [...action.payload],
-        total: action.payload.length
+        profile: action.payload.profile,
+        token: action.payload.token,
+        isLoggedIn: true,
+        isLoggingIn: false
       };
 
-    case Types.LOAD_BEERS_FAILURE:
+    case Types.LOGIN_FAILURE:
       return {
         ...state,
-        isLoadingBeers: false,
-        loadingBeersSuccess: false,
-        loadingBeersFailure: true
+        error: { msg: "Nao foi possível fazer login" },
+        isLoggedIn: false,
+        isLoggingIn: false
       };
 
-    case Types.LOAD_BEER_REQUEST:
+    case Types.LOGOUT_REQUEST:
       return {
         ...state,
-        isLoadingSelectedBeer: true,
-        loadingSelectedBeerSuccess: false,
-        loadingSelectedBeerFailure: false,
-        selectedBeer: {}
+        isLoggingOut: true
       };
 
-    case Types.LOAD_BEER_SUCCESS:
+    case Types.LOGOUT_SUCCESS:
       return {
-        ...state,
-        isLoadingSelectedBeer: false,
-        loadingSelectedBeerSuccess: true,
-        loadingSelectedBeerFailure: false,
-        selectedBeer: { ...action.payload }
+        ...INITIAL_STATE
       };
 
-    case Types.LOAD_BEER_FAILURE:
+    case Types.LOGOUT_FAILURE:
       return {
         ...state,
-        isLoadingSelectedBeer: false,
-        loadingSelectedBeerSuccess: false,
-        loadingSelectedBeerFailure: true
+        isLoggingOut: false,
+        error: { msg: "Nao foi possível fazer logout" }
       };
 
     default:

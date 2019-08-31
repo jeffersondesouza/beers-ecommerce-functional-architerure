@@ -1,14 +1,12 @@
-import { takeEvery, put, all, select, call } from "redux-saga/effects";
+import { takeEvery, put, all } from "redux-saga/effects";
 import Types from "./constants";
 import action from "./actions";
-import { BeersRepository, BeersHttpMapper } from "../../models/Beers";
+import { BeersRepository } from "../../models/Beers";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
 
 function* loadBeers({ payload }) {
   try {
-    BeersHttpMapper.fromLoadBeer = () => 1;
-
     const beersList = yield HttpFetcher.request(
       BeersRepository.loadBeers(payload)
     );
@@ -25,7 +23,6 @@ function* loadSelectedBeer({ payload }) {
   try {
     const beer = yield HttpFetcher.request(
       BeersRepository.loadBeer(payload),
-      BeersHttpMapper.fromLoadBeer
     );
 
     yield put(action.loadBeerSuccess(beer));

@@ -1,34 +1,44 @@
-import { takeEvery, put, all, select, call } from "redux-saga/effects";
+import { takeEvery, put, all } from "redux-saga/effects";
 import Types from "./constants";
 import action from "./actions";
-import { BeersRepository, BeersHttpMapper } from "../../models/Beers";
+import { UserRepository } from "../../models/User";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
 
-function* loadBeers({ payload }) {
+function* login({ payload }) {
   try {
-    BeersHttpMapper.fromLoadBeer = () => 1;
-
-    const beersList = yield HttpFetcher.request(
-      BeersRepository.loadBeers(payload)
+    yield HttpFetcher.request(UserRepository.logout(payload));
+    const userFound = USERS.find(
+      user => user.email === payload.email && user.password === payload.password
     );
+    console.log("userFound:", userFound);
 
-    yield put(action.loadBeersSuccess(beersList));
+    if (userFound) {
+      yield put(
+        action.loginSuccess({ profile: userFound, token: userFound.token })
+      );
+    } else {
+      yield put(action.loginFailure());
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("error:", error);
   }
 }
 
-function* loadSelectedBeer({ payload }) {
+function* logout({ payload }) {
   console.log("payload:", payload);
   try {
-    const beer = yield HttpFetcher.request(
-      BeersRepository.loadBeer(payload),
-      BeersHttpMapper.fromLoadBeer
+    yield HttpFetcher.request(UserRepository.logout(payload));
+    const userFound = USERS.find(
+      user => user.email === payload.email && user.password === payload.password
     );
 
-    yield put(action.loadBeerSuccess(beer));
+    if (userFound) {
+      yield put(
+        action.loginSuccess({ profile: userFound, token: userFound.token })
+      );
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("error:", error);
@@ -36,16 +46,16 @@ function* loadSelectedBeer({ payload }) {
 }
 
 /* WATCHERS */
-export function* watchLoad() {
-  yield takeEvery(Types.LOAD_BEERS_REQUEST, loadBeers);
+export function* watchLogin() {
+  yield takeEvery(Types.LOGIN_REQUEST, login);
 }
 
-export function* watchLoadBeer() {
-  yield takeEvery(Types.LOAD_BEER_REQUEST, loadSelectedBeer);
+export function* watchLogout() {
+  yield takeEvery(Types.LOGOUT_REQUEST, logout);
 }
 
 function* rootSaga() {
-  yield all([watchLoad(), watchLoadBeer()]);
+  yield all([watchLogin(), watchLogout()]);
 }
 
 export default rootSaga;
@@ -56,3 +66,18 @@ const beersList = yield call(
   BeersHttpMapper.fromLoadBeers
 );
 */
+
+const USERS = [
+  {
+    token: "12345",
+    email: "kojuliboj@mail-pro.info",
+    userName: "kojuliboj",
+    password: "123"
+  },
+  {
+    token: "12345",
+    email: "arthurhubner@hotmail.com",
+    userName: "arthur",
+    password: "aaa"
+  }
+];

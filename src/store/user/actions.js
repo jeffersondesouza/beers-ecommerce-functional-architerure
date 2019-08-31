@@ -1,40 +1,39 @@
 import Types from "./constants";
 
-const loadBeersRequest = page => ({
-  type: Types.LOAD_BEERS_REQUEST,
-  payload: page
+const loginRequest = ({ email, password }) => ({
+  type: Types.LOGIN_REQUEST,
+  payload: { email, password }
 });
 
-const loadBeersSuccess = payload => ({
-  type: Types.LOAD_BEERS_SUCCESS,
-  payload
+const loginSuccess = ({ email, token, userName }) => ({
+  type: Types.LOGIN_SUCCESS,
+  payload: { email, token, userName }
 });
 
-const loadBeersFailure = payload => ({
-  type: Types.LOAD_BEERS_FAILURE,
-  payload
+const loginFailure = error => ({
+  type: Types.LOGIN_FAILURE,
+  payload: error
 });
 
-const loadBeerRequest = payload => ({
-  type: Types.LOAD_BEER_REQUEST,
-  payload
+const logoutRequest = ({ email, token }) => ({
+  type: Types.LOGOUT_REQUEST,
+  payload: { email, token }
 });
 
-const loadBeerSuccess = payload => ({
-  type: Types.LOAD_BEER_SUCCESS,
-  payload
+const logoutSuccess = () => ({
+  type: Types.LOGOUT_SUCCESS
 });
 
-const loadBeerFailure = payload => ({
-  type: Types.LOAD_BEER_FAILURE,
-  payload
+const logoutFailure = error => ({
+  type: Types.LOGOUT_FAILURE,
+  payload: error
 });
 
 export default {
-  loadBeersRequest,
-  loadBeersSuccess,
-  loadBeersFailure,
-  loadBeerRequest,
-  loadBeerSuccess,
-  loadBeerFailure
+  loginRequest,
+  loginSuccess,
+  loginFailure,
+  logoutRequest,
+  logoutSuccess,
+  logoutFailure
 };

@@ -10,8 +10,8 @@ const maybeMapper = httpMapper => {
 
 const request = ({ requestOptions, mapResponse }) =>
   fetch(requestOptions.path, requestOptions)
-    .then(res => res.json())
-    .then(mapResponse);
+    .then(mapHttpResponse)
+    .then(maybeMapper(mapResponse));
 
 export default {
   request
