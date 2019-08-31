@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import Beer from "./Beer";
 import BeerFilter from "./BeerFilter";
 
-
 const Beers = props => {
-  const { beersList, isLoadingBeers } = props;
+  const { beersList, isLoadingBeers, onAddToCart } = props;
 
   const [filterQuery, setFilterQuery] = useState("");
 
@@ -17,7 +16,9 @@ const Beers = props => {
     return beer.name.toLowerCase().includes(query.toLowerCase());
   };
 
-  const renderBeer = item => <Beer key={item.id} {...item} />;
+  const renderBeer = item => (
+    <Beer onAddToCart={onAddToCart(item)} key={item.id} {...item} />
+  );
 
   if (isLoadingBeers) {
     return <div className="Beers">Carregando...</div>;

@@ -11,7 +11,6 @@ function* login({ payload }) {
     const userFound = USERS.find(
       user => user.email === payload.email && user.password === payload.password
     );
-    console.log("userFound:", userFound);
 
     if (userFound) {
       yield put(
@@ -27,7 +26,6 @@ function* login({ payload }) {
 }
 
 function* logout({ payload }) {
-  console.log("payload:", payload);
   try {
     yield HttpFetcher.request(UserRepository.logout(payload));
     const userFound = USERS.find(

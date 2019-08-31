@@ -6,12 +6,14 @@ import "./styles.scss";
 import BeerImage from "./BeerImage";
 
 const Beer = props => {
-  const { id, abv, name, imageUrl, tagline } = props;
+  const { id, abv, name, imageUrl, tagline, onAddToCart } = props;
 
   return (
     <div className="Beer">
       <div className="Beer__add">
-        <button className="btn-round">+</button>
+        <button onClick={onAddToCart} className="btn-round">
+          +
+        </button>
       </div>
       <Link to={`/cervejas/${id}`}>
         <BeerImage imageUrl={imageUrl} name={name} />

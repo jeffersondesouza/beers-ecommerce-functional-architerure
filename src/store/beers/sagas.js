@@ -19,7 +19,6 @@ function* loadBeers({ payload }) {
 }
 
 function* loadSelectedBeer({ payload }) {
-  console.log("payload:", payload);
   try {
     const beer = yield HttpFetcher.request(
       BeersRepository.loadBeer(payload),

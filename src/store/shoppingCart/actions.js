@@ -1,40 +1,46 @@
 import Types from "./constants";
 
-const loadBeersRequest = page => ({
-  type: Types.LOAD_BEERS_REQUEST,
-  payload: page
-});
-
-const loadBeersSuccess = payload => ({
-  type: Types.LOAD_BEERS_SUCCESS,
+const addProduct = payload => ({
+  type: Types.ADD_PRODUCT,
   payload
 });
 
-const loadBeersFailure = payload => ({
-  type: Types.LOAD_BEERS_FAILURE,
+const removeProduct = id => ({
+  type: Types.REMOVE_PRODUCT,
+  payload: id
+});
+
+const increaseProduct = (id, total) => ({
+  type: Types.INCREASE_PRODUCT,
+  payload: { id, total }
+});
+
+const decreaseProduct = (id, total) => ({
+  type: Types.DECREASE_PRODUCT,
+  payload: { id, total }
+});
+
+const buyRequest = payload => ({
+  type: Types.BUY_REQUEST,
   payload
 });
 
-const loadBeerRequest = payload => ({
-  type: Types.LOAD_BEER_REQUEST,
+const buySuccess = payload => ({
+  type: Types.BUY_SUCCESS,
   payload
 });
 
-const loadBeerSuccess = payload => ({
-  type: Types.LOAD_BEER_SUCCESS,
-  payload
-});
-
-const loadBeerFailure = payload => ({
-  type: Types.LOAD_BEER_FAILURE,
-  payload
+const buyFailure = error => ({
+  type: Types.BUY_FAILURE,
+  payload: error
 });
 
 export default {
-  loadBeersRequest,
-  loadBeersSuccess,
-  loadBeersFailure,
-  loadBeerRequest,
-  loadBeerSuccess,
-  loadBeerFailure
+  addProduct,
+  removeProduct,
+  increaseProduct,
+  decreaseProduct,
+  buyRequest,
+  buySuccess,
+  buyFailure
 };

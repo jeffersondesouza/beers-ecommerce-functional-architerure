@@ -12,9 +12,15 @@ const BeersContainer = props => {
     dispatchLoadBeers(1);
   }, [dispatchLoadBeers]);
 
+  const handleAddToCart = item => () => props.dispatchAddProduct(item);
+
   return (
     <>
-      <Beers beersList={beersList} isLoadingBeers={isLoadingBeers} />
+      <Beers
+        onAddToCart={handleAddToCart}
+        beersList={beersList}
+        isLoadingBeers={isLoadingBeers}
+      />
     </>
   );
 };
@@ -26,7 +32,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchLoadBeers: page => dispatch(actions.beer.loadBeersRequest(page))
+  dispatchLoadBeers: page => dispatch(actions.beer.loadBeersRequest(page)),
+  dispatchAddProduct: product =>
+    dispatch(actions.shoppingCart.addProduct(product))
 });
 
 export default connect(
