@@ -2,11 +2,11 @@ import { takeEvery, put, all, delay } from "redux-saga/effects";
 import Types from "./constants";
 import action from "./actions";
 
-function* buy({ payload }) {
+function* loadDashboard() {
   try {
     yield delay(1000);
 
-    yield put(action.buySuccess());
+    yield put(action.loadBeerOfMonthSuccess());
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("error:", error);
@@ -14,19 +14,12 @@ function* buy({ payload }) {
 }
 
 /* WATCHERS */
-export function* watchBuy() {
-  yield takeEvery(Types.BUY_REQUEST, buy);
+export function* watchLoadDashboard() {
+  yield takeEvery(Types.LOAD_DASHBOARD_REQUEST, loadDashboard);
 }
 
 function* rootSaga() {
-  yield all([watchBuy()]);
+  yield all([watchLoadDashboard()]);
 }
 
 export default rootSaga;
-/*);
-const beersList = yield call(
-  HttpFetcher.request,
-  BeersRepository.loadBeers(1),
-  BeersHttpMapper.fromLoadBeers
-);
-*/
