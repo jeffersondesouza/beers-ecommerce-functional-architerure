@@ -1,16 +1,19 @@
-export const LOAD_BEERS_REQUEST = "beers:LOAD_BEERS_REQUEST";
-export const LOAD_BEERS_SUCCESS = "beers:LOAD_BEERS_SUCCESS";
-export const LOAD_BEERS_FAILURE = "beers:LOAD_BEERS_FAILURE";
+export const ADD_ITEM = "shoppingCart:ADD_ITEM";
+export const REMOVE_ITEM = "shoppingCart:ADD_ITEM";
 
-export const LOAD_BEER_REQUEST = "beers:LOAD_BEER_REQUEST";
-export const LOAD_BEER_SUCCESS = "beers:LOAD_BEER_SUCCESS";
-export const LOAD_BEER_FAILURE = "beers:LOAD_BEER_FAILURE";
+export const INCREASE_ITEM = "shoppingCart:ADD_ITEM";
+export const DECREASE_ITEM = "shoppingCart:ADD_ITEM";
+
+export const BUY_REQUEST = "beers:LOAD_BEER_REQUEST";
+export const BUY_SUCCESS = "beers:LOAD_BEER_SUCCESS";
+export const BUY_FAILURE = "beers:LOAD_BEER_FAILURE";
 
 export default {
-  LOAD_BEERS_REQUEST,
-  LOAD_BEERS_SUCCESS,
-  LOAD_BEERS_FAILURE,
-  LOAD_BEER_REQUEST,
-  LOAD_BEER_SUCCESS,
-  LOAD_BEER_FAILURE
+  ADD_ITEM,
+  REMOVE_ITEM,
+  INCREASE_ITEM,
+  DECREASE_ITEM,
+  BUY_REQUEST,
+  BUY_SUCCESS,
+  BUY_FAILURE
 };

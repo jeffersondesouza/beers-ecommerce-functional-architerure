@@ -5,7 +5,7 @@ import { BeersRepository } from "../../models/Beers";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
 
-function* loadBeers({ payload }) {
+function* buy({ payload }) {
   try {
     const beersList = yield HttpFetcher.request(
       BeersRepository.loadBeers(payload)
@@ -18,31 +18,13 @@ function* loadBeers({ payload }) {
   }
 }
 
-function* loadSelectedBeer({ payload }) {
-  console.log("payload:", payload);
-  try {
-    const beer = yield HttpFetcher.request(
-      BeersRepository.loadBeer(payload),
-    );
-
-    yield put(action.loadBeerSuccess(beer));
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log("error:", error);
-  }
-}
-
 /* WATCHERS */
-export function* watchLoad() {
-  yield takeEvery(Types.LOAD_BEERS_REQUEST, loadBeers);
-}
-
-export function* watchLoadBeer() {
-  yield takeEvery(Types.LOAD_BEER_REQUEST, loadSelectedBeer);
+export function* watchBuy() {
+  yield takeEvery(Types.BUY_REQUEST, buy);
 }
 
 function* rootSaga() {
-  yield all([watchLoad(), watchLoadBeer()]);
+  yield all([watchBuy()]);
 }
 
 export default rootSaga;
