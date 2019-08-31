@@ -12,7 +12,8 @@ const loadBeer = id => ({
   requestOptions: {
     path: `https://api.punkapi.com/v2/beers/${id}`,
     method: "GET"
-  }
+  },
+  mapResponse: HttpMapper.fromLoadBeer
 });
 
 export default {
