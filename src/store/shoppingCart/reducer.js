@@ -2,7 +2,6 @@ import INITIAL_STATE from "./state";
 import Types from "./constants";
 
 const reducer = (state = INITIAL_STATE, action) => {
-  console.log("action:", action);
   switch (action.type) {
     case Types.ADD_PRODUCT:
       return {
