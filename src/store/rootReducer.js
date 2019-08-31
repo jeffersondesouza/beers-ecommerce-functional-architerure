@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 
 import beersReducer from "./beers/reducer";
+import userReducer from "./user/reducer";
 
 const appReducer = combineReducers({
-  beers: beersReducer
+  beers: beersReducer,
+  user: userReducer
 });
 
 const rootReducer = (state, action) => {

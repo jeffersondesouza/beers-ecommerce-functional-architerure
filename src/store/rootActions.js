@@ -1,5 +1,7 @@
 import beerActions from "./beers/actions";
+import userActions from "./user/actions";
 
 export default {
-  beer: { ...beerActions }
+  beer: { ...beerActions },
+  user: { ...userActions }
 };
