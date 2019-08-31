@@ -20,9 +20,9 @@ const setBeerOfMonth = beer => ({
   payload: beer
 });
 
-const setTip = tip => ({
+const setTip = ({ id, msg }) => ({
   type: Types.SET_TIP,
-  payload: tip
+  payload: { id, msg }
 });
 
 export default {

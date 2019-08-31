@@ -2,20 +2,27 @@ import { takeEvery, put, all, delay } from "redux-saga/effects";
 import Types from "./constants";
 import action from "./actions";
 
+import HttpFetcher from "../../utils/http/HttpFetcher";
+import { BeerMothAPI } from "./../../models/BeerMoth";
+import { BeerTipAPI } from "./../../models/BeerTip";
+
 function* loadDashboard() {
   try {
-    const res = yield all([
-      fetch("https://api.punkapi.com/v2/beers/random")
-        .then(res => res.json())
-        .then(res => res[0]),
-      fetch("https://api.punkapi.com/v2/beers/random")
-        .then(res => res.json())
-        .then(res => res[0])
+    const [beer, tip] = yield all([
+      HttpFetcher.request(BeerMothAPI.load()),
+      HttpFetcher.request(BeerTipAPI.load())
     ]);
 
-    console.log("res:", res);
-
     yield put(action.loadDashboardSuccess());
+
+    if (beer) {
+      yield put(action.setBeerOfMonth(beer));
+    }
+
+    if (tip) {
+      yield put(action.setTip(tip));
+    }
+    
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("error:", error);

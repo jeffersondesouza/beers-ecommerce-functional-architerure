@@ -31,7 +31,7 @@ const reducer = (state = INITIAL_STATE, action) => {
     case Types.SET_TIP:
       return {
         ...state,
-        tip: action.payload
+        tip: action.payload.msg
       };
 
     default:
