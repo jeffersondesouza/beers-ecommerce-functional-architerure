@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
+import actions from "../../../store/rootActions";
+
 import Beers from "../../components/Beers";
 
-import actions from "../../../store/rootActions";
 
 const BeersContainer = props => {
   const { dispatchLoadBeers, isLoadingBeers, beersList } = props;
