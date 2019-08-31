@@ -4,9 +4,18 @@ import action from "./actions";
 
 function* loadDashboard() {
   try {
-    yield delay(1000);
+    const res = yield all([
+      fetch("https://api.punkapi.com/v2/beers/random")
+        .then(res => res.json())
+        .then(res => res[0]),
+      fetch("https://api.punkapi.com/v2/beers/random")
+        .then(res => res.json())
+        .then(res => res[0])
+    ]);
 
-    yield put(action.loadBeerOfMonthSuccess());
+    console.log("res:", res);
+
+    yield put(action.loadDashboardSuccess());
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("error:", error);

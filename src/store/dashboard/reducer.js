@@ -3,36 +3,35 @@ import Types from "./constants";
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case Types.ADD_PRODUCT:
+    case Types.LOAD_DASHBOARD_REQUEST:
       return {
         ...state,
-        products: [...state.products, action.payload]
+        isLoadingDashboard: true
       };
 
-    case Types.REMOVE_PRODUCT:
+    case Types.LOAD_DASHBOARD_SUCCESS:
       return {
         ...state,
-        products: state.products.filter(item => item.id !== action.payload)
+        isLoadingDashboard: false
       };
 
-    case Types.BUY_REQUEST:
+    case Types.LOAD_DASHBOARD_FAILURE:
       return {
         ...state,
-        isBuying: true
+        isLoadingDashboard: false,
+        error: { msg: "Nao foi possível carregar os detalhes", data: action }
       };
 
-    case Types.BUY_SUCCESS:
+    case Types.SET_BEER_OF_MONTH:
       return {
         ...state,
-        isBuying: false,
-        products: [],
-        error: INITIAL_STATE.error
+        beerOfMoth: { ...action.payload }
       };
 
-    case Types.BUY_FAILURE:
+    case Types.SET_TIP:
       return {
         ...state,
-        isBuying: false
+        tip: action.payload
       };
 
     default:

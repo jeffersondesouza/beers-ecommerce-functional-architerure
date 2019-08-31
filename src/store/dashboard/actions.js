@@ -15,8 +15,20 @@ const loadDashboardFailure = error => ({
   payload: error
 });
 
+const setBeerOfMonth = beer => ({
+  type: Types.SET_BEER_OF_MONTH,
+  payload: beer
+});
+
+const setTip = tip => ({
+  type: Types.SET_TIP,
+  payload: tip
+});
+
 export default {
   loadDashboardRequest,
   loadDashboardSuccess,
-  loadDashboardFailure
+  loadDashboardFailure,
+  setBeerOfMonth,
+  setTip
 };
