@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 import beersReducer from "./beers/reducer";
 import userReducer from "./user/reducer";
-import shoppingCartReducer from "./user/reducer";
+import shoppingCartReducer from "./shoppingCart/reducer";
 
 const appReducer = combineReducers({
   beers: beersReducer,

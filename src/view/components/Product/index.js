@@ -4,6 +4,7 @@ import "./styles.scss";
 
 const Product = props => {
   const { name, tagline, abv, imageUrl } = props;
+  console.log('props:', props)
 
   return (
     <div className="Product">

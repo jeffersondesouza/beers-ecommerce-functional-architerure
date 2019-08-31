@@ -2,12 +2,12 @@ import React from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
 
 import { HomePage, LoginPage, ShoppingCartPage, BeerPage } from "./view/pages";
-import Header from "./view/components/Header";
+import HeaderContainer from "./view/containers/HeaderContainer";
 
 function App() {
   return (
     <div>
-      <Header />
+      <HeaderContainer />
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/cervejas" />} />
         <Route exact path="/cervejas" component={HomePage} />

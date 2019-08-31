@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 import "./styles.scss";
 
-const Header = () => {
+const Header = props => {
+  const { products } = props;
+
   return (
     <header className="Header">
       <div className="Header__brand">
@@ -17,13 +19,13 @@ const Header = () => {
             <Link to="/cervejas">Cervejis</Link>
           </li>
           <li className="MainNav__link">
-            <Link to="/sacola">sacolis 1</Link>
+            <Link to="/sacola">sacolis {products}</Link>
           </li>
           <div className="MainNav__auth">
             <li className="MainNav__link">
               <Link to="/login">login</Link>
             </li>
-          {/*   <li className="MainNav__link">
+            {/*   <li className="MainNav__link">
               <Link to="/login">logout</Link>
             </li> */}
           </div>
