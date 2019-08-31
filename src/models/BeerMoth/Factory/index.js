@@ -1,3 +1,4 @@
+// chama o type
 
 const BeerModel = item => ({
   id: item.id,

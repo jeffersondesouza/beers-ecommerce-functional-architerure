@@ -3,7 +3,9 @@ import Types from "./constants";
 import action from "./actions";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
-import { BeerMothAPI } from "./../../models/BeerMoth";
+
+import BeerMothAPI from "./../../models/BeerMoth/API";
+
 import { BeerTipAPI } from "./../../models/BeerTip";
 
 function* loadDashboard() {
@@ -22,7 +24,6 @@ function* loadDashboard() {
     if (tip) {
       yield put(action.setTip(tip));
     }
-    
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log("error:", error);

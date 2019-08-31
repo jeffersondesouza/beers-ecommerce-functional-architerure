@@ -1,4 +1,4 @@
-import BeerMothModel from "../BeerMothModel";
+import BeerMothModel from "../Factory";
 
 import parseSnackToCamelCaseObject from "../../../utils/objectsArrays/parseSnackToCamelCaseObject";
 
