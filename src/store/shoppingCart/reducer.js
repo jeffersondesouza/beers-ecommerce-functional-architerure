@@ -15,19 +15,21 @@ const reducer = (state = INITIAL_STATE, action) => {
         products: state.products.filter(item => item.id !== action.payload)
       };
 
-    case Types.LOAD_BEERS_REQUEST:
+    case Types.BUY_REQUEST:
       return {
         ...state,
         isBuying: true
       };
 
-    case Types.LOAD_BEERS_SUCCESS:
+    case Types.BUY_SUCCESS:
       return {
         ...state,
-        isBuying: false
+        isBuying: false,
+        products: [],
+        error: INITIAL_STATE.error
       };
 
-    case Types.LOAD_BEERS_FAILURE:
+    case Types.BUY_FAILURE:
       return {
         ...state,
         isBuying: false

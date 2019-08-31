@@ -9,6 +9,8 @@ const ShoppingCartContainer = props => {
 
   const handleRemoveProduct = id => () => props.dispatchRemoveProduct(id);
 
+  const handleBuy = () => props.dispatchBuy();
+
   return (
     <>
       <div className="ShoppingCartPage__products">
@@ -21,7 +23,9 @@ const ShoppingCartContainer = props => {
         ))}
       </div>
       <footer className="ShoppingCartPage__footer">
-        <button className="btn">Confirmar Compra</button>
+        <button onClick={handleBuy} className="btn">
+          Confirmar Compra
+        </button>
       </footer>
     </>
   );
@@ -33,7 +37,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchRemoveProduct: id => dispatch(actions.shoppingCart.removeProduct(id))
+  dispatchRemoveProduct: id => dispatch(actions.shoppingCart.removeProduct(id)),
+  dispatchBuy: () => dispatch(actions.shoppingCart.buyRequest())
 });
 
 export default connect(
