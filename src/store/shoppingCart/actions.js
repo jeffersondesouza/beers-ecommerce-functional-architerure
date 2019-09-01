@@ -1,4 +1,4 @@
-import Action from "./../utils/types/Action";
+import Action from "./../utils/types/ActionType";
 
 import Types from "./constants";
 
