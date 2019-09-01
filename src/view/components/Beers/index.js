@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+// @flow
+import * as React from "react";
+import { useState } from "react";
 
 import Beer from "./Beer";
 import BeerFilter from "./BeerFilter";
@@ -17,7 +19,7 @@ const Beers = props => {
   };
 
   const renderBeer = item => (
-    <Beer onAddToCart={onAddToCart(item)} key={item.id} {...item} />
+    <Beer onAddToCart={onAddToCart(item)} key={item.id} {...item}/>
   );
 
   if (isLoadingBeers) {

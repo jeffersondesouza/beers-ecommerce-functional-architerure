@@ -1,11 +1,21 @@
-import React from "react";
+// @flow
+import * as React from "react";
 import { Link } from "react-router-dom";
 import BeerFooter from "./BeerFooter";
 
 import "./styles.scss";
 import BeerImage from "./BeerImage";
 
-const Beer = props => {
+type Props = {
+  id: number,
+  abv: number,
+  name: string,
+  imageUrl: string,
+  tagline: string,
+  onAddToCart: any
+};
+
+const Beer = (props: Props) => {
   const { id, abv, name, imageUrl, tagline, onAddToCart } = props;
 
   return (
