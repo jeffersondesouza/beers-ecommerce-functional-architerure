@@ -1,8 +1,8 @@
 export const ADD_PRODUCT = "shoppingCart:ADD_PRODUCT";
 export const REMOVE_PRODUCT = "shoppingCart:REMOVE_PRODUCT";
 
-export const INCREASE_PRODUCT = "shoppingCart:ADD_PRODUCT";
-export const DECREASE_PRODUCT = "shoppingCart:ADD_PRODUCT";
+export const INCREASE_PRODUCT = "shoppingCart:INCREASE_PRODUCT";
+export const DECREASE_PRODUCT = "shoppingCart:DECREASE_PRODUCT";
 
 export const BUY_REQUEST = "beers:BUY_REQUEST";
 export const BUY_SUCCESS = "beers:BUY_SUCCESS";

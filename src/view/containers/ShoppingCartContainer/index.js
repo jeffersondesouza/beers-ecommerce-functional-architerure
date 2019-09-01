@@ -14,6 +14,9 @@ const ShoppingCartContainer = props => {
   const handleIncreaseProduct = item => () =>
     props.dispatchIncreaseProduct(item);
 
+  const handleDecreaseProduct = item => () =>
+    props.dispatchDecreaseProduct(item.id, 1);
+
   return (
     <>
       <div className="ShoppingCartPage__products">
@@ -21,6 +24,7 @@ const ShoppingCartContainer = props => {
           <Product
             onRemoveProduct={handleRemoveProduct}
             onIncreaseProduct={handleIncreaseProduct(item)}
+            onDecreaseProduct={handleDecreaseProduct(item)}
             key={item.id}
             {...item}
           />
@@ -44,7 +48,9 @@ const mapDispatchToProps = dispatch => ({
   dispatchRemoveProduct: id => dispatch(actions.shoppingCart.removeProduct(id)),
   dispatchBuy: () => dispatch(actions.shoppingCart.buyRequest()),
   dispatchIncreaseProduct: item =>
-    dispatch(actions.shoppingCart.addProduct(item))
+    dispatch(actions.shoppingCart.addProduct(item)),
+  dispatchDecreaseProduct: item =>
+    dispatch(actions.shoppingCart.decreaseProduct(item))
 });
 
 export default connect(

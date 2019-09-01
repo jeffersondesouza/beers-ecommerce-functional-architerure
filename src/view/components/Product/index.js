@@ -10,6 +10,7 @@ const Product = props => {
     abv,
     imageUrl,
     quantity,
+    onDecreaseProduct,
     onIncreaseProduct,
     onRemoveProduct
   } = props;
@@ -27,7 +28,9 @@ const Product = props => {
         <footer className="Product__footer">Quantidade: {quantity}</footer>
       </div>
       <div className="Product__actions">
-        <button className="btn-round">-</button>
+        <button onClick={onDecreaseProduct} className="btn-round">
+          -
+        </button>
         <button onClick={onIncreaseProduct} className="btn-round">
           +
         </button>

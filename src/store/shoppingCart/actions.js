@@ -10,12 +10,12 @@ const removeProduct = id => ({
   payload: id
 });
 
-const increaseProduct = (id, total) => ({
+const increaseProduct = (id, total = 1) => ({
   type: Types.INCREASE_PRODUCT,
   payload: { id, total }
 });
 
-const decreaseProduct = (id, total) => ({
+const decreaseProduct = (id, total = 1) => ({
   type: Types.DECREASE_PRODUCT,
   payload: { id, total }
 });
