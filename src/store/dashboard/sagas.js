@@ -1,12 +1,11 @@
-import { takeEvery, put, all, delay } from "redux-saga/effects";
+import { takeEvery, put, all } from "redux-saga/effects";
 import Types from "./constants";
 import action from "./actions";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
 
-import BeerMothAPI from "./../../models/BeerMoth/API";
-
-import { BeerTipAPI } from "./../../models/BeerTip";
+import { BeerMothAPI } from "./../../models/controllers/BeerMoth";
+import { BeerTipAPI } from "./../../models/controllers/BeerTip";
 
 function* loadDashboard() {
   try {

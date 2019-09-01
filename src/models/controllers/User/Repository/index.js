@@ -1,5 +1,3 @@
-import HttpMapper from "./../HttpMapper/index";
-
 const login = page => ({
   requestOptions: {
     path: `https://api.punkapi.com/v2/beers/1`,

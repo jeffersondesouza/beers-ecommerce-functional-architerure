@@ -1,6 +1,6 @@
 import BeerMothModel from "../BeerTipModel";
 
-import parseSnackToCamelCaseObject from "../../../utils/objectsArrays/parseSnackToCamelCaseObject";
+import parseSnackToCamelCaseObject from "../../../../utils/objectsArrays/parseSnackToCamelCaseObject";
 
 const fromLoadTip = beersList => {
   const tip = beersList.map(parseSnackToCamelCaseObject)[0];

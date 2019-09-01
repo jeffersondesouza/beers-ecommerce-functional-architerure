@@ -1,6 +1,6 @@
-import BeerModel from "../BeerModel";
+import BeerModel from "../UserModel";
 
-import parseSnackToCamelCaseObject from "../../../utils/objectsArrays/parseSnackToCamelCaseObject";
+import parseSnackToCamelCaseObject from "../../../../utils/objectsArrays/parseSnackToCamelCaseObject";
 
 const fromLoadBeers = serverData =>
   serverData.map(parseSnackToCamelCaseObject).map(BeerModel);

@@ -1,9 +1,9 @@
 import { takeEvery, put, all } from "redux-saga/effects";
 import Types from "./constants";
 import action from "./actions";
-import { BeersRepository } from "../../models/Beers";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
+import { BeersRepository } from "../../models/controllers/Beers";
 
 function* loadBeers({ payload }) {
   try {
@@ -20,9 +20,7 @@ function* loadBeers({ payload }) {
 
 function* loadSelectedBeer({ payload }) {
   try {
-    const beer = yield HttpFetcher.request(
-      BeersRepository.loadBeer(payload),
-    );
+    const beer = yield HttpFetcher.request(BeersRepository.loadBeer(payload));
 
     yield put(action.loadBeerSuccess(beer));
   } catch (error) {

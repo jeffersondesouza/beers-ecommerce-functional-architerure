@@ -1,4 +1,4 @@
-import HttpMapper from "./../HttpMapper";
+import HttpMapper from "../HttpMapper";
 
 const buy = () => ({
   requestOptions: {

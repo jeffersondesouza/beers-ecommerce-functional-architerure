@@ -1,3 +1,7 @@
+// @flow
+
+import type { HttpRequest } from "./../../models/types/HttpRequest";
+
 const mapHttpResponse = res => res.json();
 
 const maybeMapper = httpMapper => {
@@ -8,10 +12,10 @@ const maybeMapper = httpMapper => {
     : defaulMapper;
 };
 
-const request = ({ requestOptions, mapResponse }) =>
-  fetch(requestOptions.path, requestOptions)
+const request = (params: HttpRequest): any =>
+  fetch(params.requestOptions.path, params.requestOptions)
     .then(mapHttpResponse)
-    .then(maybeMapper(mapResponse));
+    .then(maybeMapper(params.mapResponse));
 
 export default {
   request

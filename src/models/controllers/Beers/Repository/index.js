@@ -1,6 +1,10 @@
+// @flow
+
+import type { HttpRequest } from "./../../../types/HttpRequest";
+
 import HttpMapper from "./../HttpMapper";
 
-const loadBeers = page => ({
+const loadBeers = (page: number): HttpRequest => ({
   requestOptions: {
     path: `https://api.punkapi.com/v2/beers?page=${page}&per_page=10`,
     method: "GET"
@@ -8,7 +12,7 @@ const loadBeers = page => ({
   mapResponse: HttpMapper.fromLoadBeers
 });
 
-const loadBeer = id => ({
+const loadBeer = (id: number): HttpRequest => ({
   requestOptions: {
     path: `https://api.punkapi.com/v2/beers/${id}`,
     method: "GET"
