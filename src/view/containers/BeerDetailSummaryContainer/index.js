@@ -18,7 +18,7 @@ const BeerDetailSummaryContainer = props => {
     dispatchLoadBeer(match.params.id);
   }, [match, dispatchLoadBeer]);
 
-  const handleAddToShopCart = () => dispatchAddToShopping(selectedBeer.id);
+  const handleAddToShopCart = () => dispatchAddToShopping(selectedBeer);
 
   return (
     <>

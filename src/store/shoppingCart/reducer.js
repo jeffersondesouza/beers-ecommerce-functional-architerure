@@ -4,9 +4,26 @@ import Types from "./constants";
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case Types.ADD_PRODUCT:
+      const productsExists = state.products.find(
+        item => item.id === action.payload.id
+      );
+
+      let newProducts = [];
+
+      if (!productsExists) {
+        newProducts = [...state.products, { ...action.payload, quantity: 1 }];
+      } else {
+        newProducts = state.products.map(item => {
+          if (item.id === action.payload.id) {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+          return item;
+        });
+      }
+
       return {
         ...state,
-        products: [...state.products, action.payload]
+        products: newProducts
       };
 
     case Types.REMOVE_PRODUCT:
