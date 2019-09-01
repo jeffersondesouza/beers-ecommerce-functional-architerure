@@ -1,21 +1,40 @@
-import React from "react";
+// @flow
+
+import * as React from "react";
 import { connect } from "react-redux";
 
 import actions from "../../../store/rootActions";
 import Product from "../../components/Product";
 
-const ShoppingCartContainer = props => {
+type product = {
+  id: number
+};
+
+type StoreProps = {
+  products: product[],
+  error: any,
+  dispatchRemoveProduct: number => void,
+  dispatchBuy: () => void,
+  dispatchIncreaseProduct: (number, ?number) => void,
+  dispatchDecreaseProduct: (number, ?number) => void
+};
+
+type Props = {
+  ...StoreProps
+};
+
+const ShoppingCartContainer = (props: Props) => {
   const { products } = props;
 
   const handleRemoveProduct = id => () => props.dispatchRemoveProduct(id);
 
   const handleBuy = () => props.dispatchBuy();
 
-  const handleIncreaseProduct = item => () =>
-    props.dispatchIncreaseProduct(item);
+  const handleIncreaseProduct = (itemId: number) => () =>
+    props.dispatchIncreaseProduct(itemId);
 
-  const handleDecreaseProduct = item => () =>
-    props.dispatchDecreaseProduct(item.id, 1);
+  const handleDecreaseProduct = (itemId: number) => () =>
+    props.dispatchDecreaseProduct(itemId, 1);
 
   return (
     <>
@@ -23,8 +42,8 @@ const ShoppingCartContainer = props => {
         {products.map(item => (
           <Product
             onRemoveProduct={handleRemoveProduct}
-            onIncreaseProduct={handleIncreaseProduct(item)}
-            onDecreaseProduct={handleDecreaseProduct(item)}
+            onIncreaseProduct={handleIncreaseProduct(item.id)}
+            onDecreaseProduct={handleDecreaseProduct(item.id)}
             key={item.id}
             {...item}
           />
@@ -39,7 +58,7 @@ const ShoppingCartContainer = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any): any => ({
   products: state.shoppingCart.products,
   error: state.shoppingCart.error
 });
@@ -48,12 +67,12 @@ const mapDispatchToProps = dispatch => ({
   dispatchRemoveProduct: id => dispatch(actions.shoppingCart.removeProduct(id)),
   dispatchBuy: () => dispatch(actions.shoppingCart.buyRequest()),
   dispatchIncreaseProduct: item =>
-    dispatch(actions.shoppingCart.addProduct(item)),
+    dispatch(actions.shoppingCart.increaseProduct(item)),
   dispatchDecreaseProduct: item =>
-    dispatch(actions.shoppingCart.decreaseProduct(item))
+    dispatch(actions.shoppingCart.decreaseProduct(item, 1))
 });
 
-export default connect(
+export default connect<Props, StoreProps, _, _, _, _>(
   mapStateToProps,
   mapDispatchToProps
 )(ShoppingCartContainer);

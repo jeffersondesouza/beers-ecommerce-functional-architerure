@@ -1,35 +1,71 @@
+// @flow
 import INITIAL_STATE from "./state";
 import Types from "./constants";
 
-const reducer = (state = INITIAL_STATE, action) => {
+const addProductsState = (state, action) => {
+  const productsExists = state.products.find(
+    item => item.id === action.payload.id
+  );
+
+  let newProducts = [];
+
+  if (!productsExists) {
+    newProducts = [...state.products, { ...action.payload, quantity: 1 }];
+  } else {
+    newProducts = state.products.map(item => {
+      if (item.id === action.payload.id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+  }
+
+  return newProducts;
+};
+
+const reducer = (state: Object = INITIAL_STATE, action: Object) => {
   switch (action.type) {
     case Types.ADD_PRODUCT:
-      const productsExists = state.products.find(
-        item => item.id === action.payload.id
-      );
-
-      let newProducts = [];
-
-      if (!productsExists) {
-        newProducts = [...state.products, { ...action.payload, quantity: 1 }];
-      } else {
-        newProducts = state.products.map(item => {
-          if (item.id === action.payload.id) {
-            return { ...item, quantity: item.quantity + 1 };
-          }
-          return item;
-        });
-      }
-
       return {
         ...state,
-        products: newProducts
+        products: addProductsState(state, action)
       };
 
     case Types.REMOVE_PRODUCT:
       return {
         ...state,
         products: state.products.filter(item => item.id !== action.payload)
+      };
+
+    case Types.INCREASE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.map(item => {
+          if (item.id === action.payload.id) {
+            return {
+              ...item,
+              quantity: item.quantity + action.payload.total
+            };
+          }
+          return item;
+        })
+      };
+
+    case Types.DECREASE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.map(item => {
+          if (item.id === action.payload.id) {
+            return {
+              ...item,
+              quantity:
+                item.quantity > 1
+                  ? item.quantity - action.payload.total
+                  : item.quantity
+            };
+          }
+          return item;
+        })
       };
 
     case Types.BUY_REQUEST:

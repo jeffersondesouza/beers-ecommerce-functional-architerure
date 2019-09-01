@@ -1,3 +1,5 @@
+// @flow 
+
 export const ADD_PRODUCT = "shoppingCart:ADD_PRODUCT";
 export const REMOVE_PRODUCT = "shoppingCart:REMOVE_PRODUCT";
 
