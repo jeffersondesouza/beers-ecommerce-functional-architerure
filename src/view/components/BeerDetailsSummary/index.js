@@ -7,13 +7,15 @@ import Maybe from "../../../utils/objectsArrays/Maybe";
 
 const BeerDetailsSummary = props => {
   const {
+    id,
     name,
     tagline,
     firstBrewed,
     description,
     boilVolume,
     foodPairing,
-    ingredients
+    ingredients,
+    onAddToShopCart
   } = props;
 
   const boilVolumeObj = Maybe.of(boilVolume).get({});
@@ -64,7 +66,9 @@ const BeerDetailsSummary = props => {
         ))}
       </div>
       <footer className="BeerPage__footer">
-        <button className="btn">Adicionar à Sacola</button>
+        <button onClick={onAddToShopCart} className="btn">
+          Adicionar à Sacola
+        </button>
         <Link to="/sacola" className="BeerPage__footer-link">
           Ver Items da sacola
         </Link>

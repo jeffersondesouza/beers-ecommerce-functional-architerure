@@ -10,12 +10,15 @@ const BeerDetailSummaryContainer = props => {
     match,
     dispatchLoadBeer,
     isLoadingSelectedBeer,
-    selectedBeer
+    selectedBeer,
+    dispatchAddToShopping
   } = props;
 
   useEffect(() => {
     dispatchLoadBeer(match.params.id);
   }, [match, dispatchLoadBeer]);
+
+  const handleAddToShopCart = () => dispatchAddToShopping(selectedBeer.id);
 
   return (
     <>
@@ -30,6 +33,7 @@ const BeerDetailSummaryContainer = props => {
           boilVolume={selectedBeer.boilVolume}
           foodPairing={selectedBeer.foodPairing}
           ingredients={selectedBeer.ingredients}
+          onAddToShopCart={handleAddToShopCart}
         />
       )}
     </>
@@ -43,7 +47,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchLoadBeer: beerId => dispatch(actions.beer.loadBeerRequest(beerId))
+  dispatchLoadBeer: beerId => dispatch(actions.beer.loadBeerRequest(beerId)),
+  dispatchAddToShopping: beerId =>
+    dispatch(actions.shoppingCart.addProduct(beerId))
 });
 
 export default withRouter(
