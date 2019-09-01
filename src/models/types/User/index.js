@@ -1,1 +1,3 @@
-export { default as UserRepository } from "./Repository";
+// @flow
+
+export type User = { email: string, username: string };

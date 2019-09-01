@@ -1,1 +1,3 @@
-export { default as BeersRepository } from "./Repository";
+// @flow
+
+export type ShoppingCart = { products: string, username: string };

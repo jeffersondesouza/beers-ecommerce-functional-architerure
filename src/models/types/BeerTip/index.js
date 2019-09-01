@@ -1,1 +1,3 @@
-export { default as BeerTipAPI } from "./Repository";
+// @flow
+
+export type ShoppingCart = { id: string, message: string };
