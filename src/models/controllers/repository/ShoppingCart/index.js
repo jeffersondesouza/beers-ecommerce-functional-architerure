@@ -1,11 +1,9 @@
-import HttpMapper from "../../http-mapper/ShoppingCart";
+// @flow
+import type { HttpRequest } from "./../../../types/HttpRequest";
 
-const buy = () => ({
-  requestOptions: {
-    path: `https://api.punkapi.com/v2/beers?page=1&per_page=3`,
-    method: "GET"
-  },
-  mapResponse: HttpMapper.fromLoadBeers
+const buy = (): HttpRequest => ({
+  url: `https://api.punkapi.com/v2/beers?page=1&per_page=3`,
+  method: "GET"
 });
 
 export default {

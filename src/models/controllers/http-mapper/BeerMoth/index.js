@@ -3,6 +3,7 @@ import parseSnackToCamelCaseObject from "../../../../utils/objectsArrays/parseSn
 
 
 const fromLoadBeer = beersList => {
+  console.log('beersList:', beersList)
   const beer = beersList.map(parseSnackToCamelCaseObject)[0];
 
   return BeerMothModel(beer);

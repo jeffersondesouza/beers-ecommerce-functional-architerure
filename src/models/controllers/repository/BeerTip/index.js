@@ -1,11 +1,9 @@
-import HttpMapper from "../../http-mapper/BeerTip";
+// @flow
+import type { HttpRequest } from "./../../../types/HttpRequest";
 
-const load = () => ({
-  requestOptions: {
-    path: `https://api.punkapi.com/v2/beers/random`,
-    method: "GET"
-  },
-  mapResponse: HttpMapper.fromLoadTip
+const load = (): HttpRequest => ({
+  url: `https://api.punkapi.com/v2/beers/random`,
+  method: "GET"
 });
 
 export default {

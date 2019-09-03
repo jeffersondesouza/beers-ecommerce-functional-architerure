@@ -1,5 +1,4 @@
 // @flow
-
 import type { HttpRequest } from "./../../../types/HttpRequest";
 
 const loadBeers = (page: number): HttpRequest => ({
