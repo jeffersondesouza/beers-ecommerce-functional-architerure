@@ -12,10 +12,10 @@ const maybeMapper = httpMapper => {
     : defaulMapper;
 };
 
-const request = (params: HttpRequest): any =>
-  fetch(params.requestOptions.url, params.requestOptions)
+const request = (requestOptions: HttpRequest, httpMapper: any): any =>
+  fetch(requestOptions.url, requestOptions)
     .then(mapHttpResponse)
-    .then(maybeMapper(params.mapResponse));
+    .then(maybeMapper(httpMapper));
 
 export default {
   request

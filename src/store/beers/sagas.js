@@ -4,11 +4,13 @@ import action from "./actions";
 
 import HttpFetcher from "../../utils/services/http/HttpFetcher";
 import BeersRepository from "../../models/controllers/repository/Beers";
+import BeersMapper from "../../models/controllers/http-mapper/Beers";
 
 function* loadBeers({ payload }) {
   try {
     const beersList = yield HttpFetcher.request(
-      BeersRepository.loadBeers(payload)
+      BeersRepository.loadBeers(payload),
+      BeersMapper.fromLoadBeers
     );
 
     yield put(action.loadBeersSuccess(beersList));

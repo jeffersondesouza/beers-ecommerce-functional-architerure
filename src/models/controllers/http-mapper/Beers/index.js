@@ -4,8 +4,10 @@ import type { Beer } from "../../../types/Beer";
 import parseSnackToCamelCaseObject from "../../../../utils/objectsArrays/parseSnackToCamelCaseObject";
 import BeerFactory from "../../factory/Beers";
 
-const fromLoadBeers = (serverData: any[]): Beer[] =>
-  serverData.map(parseSnackToCamelCaseObject).map(BeerFactory);
+const fromLoadBeers = (serverData: any[]): Beer[] => {
+  console.log('serverData:', serverData)
+  return serverData.map(parseSnackToCamelCaseObject).map(BeerFactory);
+};
 
 const fromLoadBeer = (beersList: any): Beer => {
   // TODO: Aqui o Maybe mosstra-se interessante pois poderiamso fazer o map no objeto simples,
