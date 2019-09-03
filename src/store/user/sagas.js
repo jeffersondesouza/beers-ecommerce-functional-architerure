@@ -4,7 +4,7 @@ import action from "./actions";
 
 import UserRepository from "../../models/controllers/repository/User";
 
-import HttpFetcher from "../../utils/http/HttpFetcher";
+import HttpFetcher from "../../utils/services/http/HttpFetcher";
 
 function* login({ payload }) {
   try {

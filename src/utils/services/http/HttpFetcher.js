@@ -1,6 +1,6 @@
 // @flow
 
-import type { HttpRequest } from "./../../models/types/HttpRequest";
+import type { HttpRequest } from "./../../../models/types/HttpRequest";
 
 const mapHttpResponse = res => res.json();
 

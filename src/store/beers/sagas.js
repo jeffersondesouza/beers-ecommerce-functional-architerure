@@ -2,7 +2,7 @@ import { takeEvery, put, all } from "redux-saga/effects";
 import Types from "./constants";
 import action from "./actions";
 
-import HttpFetcher from "../../utils/http/HttpFetcher";
+import HttpFetcher from "../../utils/services/http/HttpFetcher";
 import BeersRepository from "../../models/controllers/repository/Beers";
 
 function* loadBeers({ payload }) {
