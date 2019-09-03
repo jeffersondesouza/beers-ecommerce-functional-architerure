@@ -13,7 +13,7 @@ const maybeMapper = httpMapper => {
 };
 
 const request = (params: HttpRequest): any =>
-  fetch(params.requestOptions.path, params.requestOptions)
+  fetch(params.requestOptions.url, params.requestOptions)
     .then(mapHttpResponse)
     .then(maybeMapper(params.mapResponse));
 

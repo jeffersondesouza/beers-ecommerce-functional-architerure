@@ -6,7 +6,7 @@ import HttpMapper from "./../HttpMapper";
 
 const loadBeers = (page: number): HttpRequest => ({
   requestOptions: {
-    path: `https://api.punkapi.com/v2/beers?page=${page}&per_page=10`,
+    url: `https://api.punkapi.com/v2/beers?page=${page}&per_page=10`,
     method: "GET"
   },
   mapResponse: HttpMapper.fromLoadBeers
@@ -14,7 +14,7 @@ const loadBeers = (page: number): HttpRequest => ({
 
 const loadBeer = (id: number): HttpRequest => ({
   requestOptions: {
-    path: `https://api.punkapi.com/v2/beers/${id}`,
+    url: `https://api.punkapi.com/v2/beers/${id}`,
     method: "GET"
   },
   mapResponse: HttpMapper.fromLoadBeer

@@ -2,8 +2,8 @@
 export type HttpRequest = {
   requestOptions: {
     ...RequestOptions,
-    path: string,
-    method: string,
+    url: string,
+    method?: string,
     data?: Object
   },
   mapResponse: any => Object
