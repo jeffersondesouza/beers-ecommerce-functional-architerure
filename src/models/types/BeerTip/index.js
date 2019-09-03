@@ -1,3 +1,3 @@
 // @flow
 
-export type ShoppingCart = { id: string, message: string };
+export type BeerTip = { id: string, message: string };

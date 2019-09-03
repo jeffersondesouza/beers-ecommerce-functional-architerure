@@ -1,14 +1,9 @@
 // @flow
 
-export type Beer = {
+export type BeerMonth = {
   id: number,
   abv: number,
   name: string,
   imageUrl: string,
-  tagline: string,
-  firstBrewed: string,
-  description: string,
-  boilVolume: Object,
-  foodPairing: string[],
-  ingredients: Object
+  tagline: string
 };

@@ -1,7 +1,6 @@
-
-const BeerModel = item => ({
+const BeerTipFactory = item => ({
   id: item.id,
-  msg: item.brewersTips,
+  msg: item.brewersTips
 });
 
-export default BeerModel;
+export default BeerTipFactory;
