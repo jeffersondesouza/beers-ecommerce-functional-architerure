@@ -1,5 +1,5 @@
 import { takeEvery, put, all } from "redux-saga/effects";
-import Types from "./constants";
+import Types from "./actionTypes";
 import action from "./actions";
 
 import HttpFetcher from "../../utils/services/http/HttpFetcher";
@@ -13,20 +13,23 @@ function* loadBeers({ payload }) {
       BeersMapper.fromLoadBeers
     );
 
-    yield put(action.loadBeersSuccess(beersList));
+    yield put(action.loadBeersSuccess());
+    yield put(action.updateBeers(beersList));
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.log("error:", error);
   }
 }
 
 function* loadSelectedBeer({ payload }) {
   try {
-    const beer = yield HttpFetcher.request(BeersRepository.loadBeer(payload));
+    const beer = yield HttpFetcher.request(
+      BeersRepository.loadBeer(payload),
+      BeersMapper.fromLoadBeer
+    );
 
-    yield put(action.loadBeerSuccess(beer));
+    yield put(action.loadBeerSuccess());
+    yield put(action.updateBeer(beer));
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.log("error:", error);
   }
 }
@@ -45,10 +48,3 @@ function* rootSaga() {
 }
 
 export default rootSaga;
-/*);
-const beersList = yield call(
-  HttpFetcher.request,
-  BeersRepository.loadBeers(1),
-  BeersHttpMapper.fromLoadBeers
-);
-*/

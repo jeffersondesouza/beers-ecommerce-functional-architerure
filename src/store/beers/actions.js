@@ -1,4 +1,4 @@
-import Types from "./constants";
+import Types from "./actionTypes";
 
 const loadBeersRequest = page => ({
   type: Types.LOAD_BEERS_REQUEST,
@@ -30,11 +30,23 @@ const loadBeerFailure = payload => ({
   payload
 });
 
+const updateBeers = payload => ({
+  type: Types.UPDATE_BEERS,
+  payload
+});
+
+const updateBeer = payload => ({
+  type: Types.UPDATE_BEER,
+  payload
+});
+
 export default {
   loadBeersRequest,
   loadBeersSuccess,
   loadBeersFailure,
   loadBeerRequest,
   loadBeerSuccess,
-  loadBeerFailure
+  loadBeerFailure,
+  updateBeers,
+  updateBeer
 };

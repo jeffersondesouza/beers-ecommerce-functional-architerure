@@ -1,8 +1,15 @@
 import INITIAL_STATE from "./state";
-import Types from "./constants";
+import Types from "./actionTypes";
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case Types.UPDATE_BEERS:
+      return {
+        ...state,
+        beersList: [...action.payload],
+        total: action.payload.length
+      };
+
     case Types.LOAD_BEERS_REQUEST:
       return {
         ...state,
@@ -16,9 +23,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         isLoadingBeers: false,
         loadingBeersSuccess: true,
-        loadingBeersFailure: false,
-        beersList: [...action.payload],
-        total: action.payload.length
+        loadingBeersFailure: false
       };
 
     case Types.LOAD_BEERS_FAILURE:
@@ -43,8 +48,13 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         isLoadingSelectedBeer: false,
         loadingSelectedBeerSuccess: true,
-        loadingSelectedBeerFailure: false,
-        selectedBeer: { ...action.payload },
+        loadingSelectedBeerFailure: false
+      };
+
+    case Types.UPDATE_BEER:
+      return {
+        ...state,
+        selectedBeer: { ...action.payload }
       };
 
     case Types.LOAD_BEER_FAILURE:
