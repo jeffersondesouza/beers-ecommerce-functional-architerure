@@ -2,7 +2,7 @@
 
 import type { HttpRequest } from "./../../../types/HttpRequest";
 
-import HttpMapper from "./../HttpMapper";
+import HttpMapper from "../../http-mapper/Beers";
 
 const loadBeers = (page: number): HttpRequest => ({
   requestOptions: {

@@ -2,7 +2,7 @@ import { takeEvery, put, all } from "redux-saga/effects";
 import Types from "./constants";
 import action from "./actions";
 
-import { UserRepository } from "../../models/controllers/User";
+import UserRepository from "../../models/controllers/repository/User";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
 

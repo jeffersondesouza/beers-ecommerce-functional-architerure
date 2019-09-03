@@ -1,4 +1,4 @@
-import HttpMapper from "../HttpMapper";
+import HttpMapper from "../../http-mapper/ShoppingCart";
 
 const buy = () => ({
   requestOptions: {

@@ -1,8 +1,8 @@
 // @flow
-import type {Beer} from "../../../types/Beer";
+import type { Beer } from "../../../types/Beer";
 
-import BeerFactory from "../BeerFactory";
 import parseSnackToCamelCaseObject from "../../../../utils/objectsArrays/parseSnackToCamelCaseObject";
+import BeerFactory from "../../factory/Beers";
 
 const fromLoadBeers = (serverData: any[]): Beer[] =>
   serverData.map(parseSnackToCamelCaseObject).map(BeerFactory);

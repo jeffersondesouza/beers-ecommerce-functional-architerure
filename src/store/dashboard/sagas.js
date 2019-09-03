@@ -3,15 +3,14 @@ import Types from "./constants";
 import action from "./actions";
 
 import HttpFetcher from "../../utils/http/HttpFetcher";
-
-import { BeerMothAPI } from "./../../models/controllers/BeerMoth";
-import { BeerTipAPI } from "./../../models/controllers/BeerTip";
+import BeerMothRepository from '../../models/controllers/repository/BeerMoth'
+import BeerTipRepository from '../../models/controllers/repository/BeerTip'
 
 function* loadDashboard() {
   try {
     const [beer, tip] = yield all([
-      HttpFetcher.request(BeerMothAPI.load()),
-      HttpFetcher.request(BeerTipAPI.load())
+      HttpFetcher.request(BeerMothRepository.load()),
+      HttpFetcher.request(BeerTipRepository.load())
     ]);
 
     yield put(action.loadDashboardSuccess());
