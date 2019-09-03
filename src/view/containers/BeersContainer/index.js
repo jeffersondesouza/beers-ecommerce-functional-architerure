@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import actions from "../../../store/rootActions";
+import { getBeersList } from "../../../store/beers/selectors";
 
 import Beers from "../../components/Beers";
-
 
 const BeersContainer = props => {
   const { dispatchLoadBeers, isLoadingBeers, beersList } = props;
@@ -27,7 +27,7 @@ const BeersContainer = props => {
 };
 
 const mapStateToProps = state => ({
-  beersList: state.beers.beersList,
+  beersList: getBeersList(state),
   error: state.beers.error,
   isLoadingBeers: state.beers.isLoadingBeers
 });
