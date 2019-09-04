@@ -8,14 +8,11 @@ import BeersMapper from "../../models/controllers/http-mapper/Beers";
 
 function* addBeerToCart({ payload }) {
   try {
-    yield delay(1000);
-
     const beer = yield HttpFetcher.request(
       BeersRepository.loadBeer(payload.id),
       BeersMapper.fromLoadBeer
     );
     console.log('beer:', beer)
-
     yield put(action.updateProduct(beer));
 
   } catch (error) {
