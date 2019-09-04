@@ -1,0 +1,14 @@
+export const LOAD_DASHBOARD_REQUEST = "dashboard:LOAD_DASHBOARD_REQUEST";
+export const LOAD_DASHBOARD_SUCCESS = "dashboard:LOAD_DASHBOARD_SUCCESS";
+export const LOAD_DASHBOARD_FAILURE = "dashboard:LOAD_DASHBOARD_FAILURE";
+
+export const SET_BEER_OF_MONTH = "dashboard:SET_BEER_OF_MONTH";
+export const SET_TIP = "dashboard:SET_TIP";
+
+export default {
+  LOAD_DASHBOARD_REQUEST,
+  LOAD_DASHBOARD_SUCCESS,
+  LOAD_DASHBOARD_FAILURE,
+  SET_BEER_OF_MONTH,
+  SET_TIP
+};

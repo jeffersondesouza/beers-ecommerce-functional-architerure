@@ -1,68 +1,141 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [STUDY] E-Commerce Architetured following Functional Programing Principals
 
-## Available Scripts
+- O Frontend é uma camada extremamante particular da aplicação, devidos as peculiaridades de se trabalhar com dados lógicos (Javascript) e elementos de view (HTML);
 
-In the project directory, you can run:
+- A Ideia dessa orfganização arquitetural é seguir ao máximo uma abordagem funcional no desenvolvimento da aplicação. Pois nem sempre a POO irá satisfazer nossas necessidade, e devido ao dinamismo necessário ao forntend, trabalhar com funcções ao invés de  objectos avaba por se mostrar bem viável.
 
-### `npm start`
+- Contudo, a arquittura segue 'convenções' da Orientção a Objetos, mas com uma execução funcional;
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- A estutura básica se divide em View, Store, Model;
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- View: São os componentes html de UI propriamente ditos. Eles são dumbs, nao fazem acesso direto aos endpoints por exemplo;
+- Store: Responsável por guardar o stado da aplicação (nesse caso via redux). E passar esssas informações  para os Componentes renderizaem em tela. O store fará requisições  assincronas ao servidor e atualizará o estado da aplicação;
+- Model: Representa o dominio da aplicação, nele temos controladores. Eles sao auxiliáres do Store, o store trás dados do servidor, os Models transformam esses dados seguindo o domain de nossa app, devolve esses dados transformados ao strore que por sua vez atualiza o estado de nossa aplicação.   
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Structure
 
-### `npm run build`
++-- models\
+|---- + -- types\
+|---- + -- controllers\
+|-----|---- + -- factory\
+|-----|---- + -- http-mapper\
+|-----|---- + -- repository\
++-- view\
+|---- + -- pages\
+|---- + -- containers\
+|---- + -- components\
++-- store\
+|---- + -- module1\
+|-----|-------- selectors\
+|-----|-------- actionTypes\
+|-----|-------- actions\
+|-----|-------- reducer\
+|-----|-------- sagas\
+|-----|-------- state\
+|---- + -- module2\
+|---- + -- module3\
++-- utils\
+|---- + -- functions(pipe,cury, MayBe, promisefy)\
+|---- + -- services(http)\
+|---- + -- arrayObject(toArrayDimensionN, fromObject, getParam)\
++-- assets\
++---- + -- png\
++---- + -- videos\
++---- + -- svg\
++-- config\
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## MODELS
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Temos o modulo models (types, controllers), na pŕatica o models é o nosso DOMAIN, lá estão os tipos de entidades(types) que a app trabalhará, e os responsáveis peloas lógiscas de manipulação de dados (controllers)que podemos;
+- No Models temos os sub módulos 'types' e 'controlles';
+- Types: Expõe(e apenas isso) as interfaces(types) de TODOS os tipos dentro do domíni0 de nossa aplicação (ex: User, Quote, HttpRequestObject)
+- Controllers: Baseando-se no MVC, engloba os módulos responsáveis pela lógica da aplicação;
+- Estutura do modulo de Controlles:
+  - Factory;
+  - http-mapper;
+  - repository;
+- Optou por esta estrutura (ao invés de uma baseada em cada model) pois nem todo model precisaŕa dos tres tipos de serviços, e um Mapeador de usuário, por exemplo, pode precisar expor uma estrutura de dados que detem de Usuários e suas respectivas CotasDeEnergia. Assim, esse mapeador pode fazer uso do UserFactory e do CotasDeEnergiaFactory;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### factory
 
-### `npm run eject`
+Recebe dados e cria uma instáncia de uma objecto baseado no seu type (ex: Usuaário, CartaoDeCredito...);
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### http-mapper
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+São responsáveis por receber os dados do servidor e mape-los para estruturas dentro do domínio da aplicação, para isso podem fazer uso de 1 ou mais Factory;
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### repository
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+É a ponte de comunicação com o mundo externo, expõem um objecto com os dados necesários para o servico de http fazer o request para um determinado endpoint;
 
-## Learn More
+O conjunto dos controllers será responsavel por:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Informar ao responsável pelo HTTP como s e deve buscar um dado no Server;
+2. Receber os Dados do Servidor e Mapear para Types dentro do domínio;
+3. Entregar esses dados tratados para o Store e este cuida do estado da aplicação.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Store
+  - O Store deve ser responsável por gerir o Estado da aplicação, neste caso temos o Redux, mas nada impede que utilize-se  por exempo a Context API, o ponto é que este módulo consentrará a gestão do estado da aplicaçã;
 
-### Code Splitting
+  - A abordagem de organização será diferente dos controles, aqui os items sao orgnizado seguindo um 'domian-style', pois sempre haverá um acoplamento interno entre action->reducer->state para uma determinada entidade do estado da aplicação;
+  
+  - Com isso, nao ficaremos com logica fortemente acopladas muito distantes uma das outros;
+  
+  - OBS: Além disso, os modulos são MUITO independentes, havendo apenas( e muito raramente) acoplamento externo  entre um 'sagas' de uma modulo A com um 'action' de um Modulo B, nao acontecendo assim dependências circulares (actionA->action, actionB->actionA). E ainda assim, o que um sagas fará para um modulo externo é apenas disparar uma ação, e nao saberá como manipular dados;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+## Structure Expanded
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
++-- models\
+|---- + -- types\
+|-----| ---- + -- User\
+|-----| ---- + -- Beer\
+|-----| ---- + -- Tip\
+|-----| ---- + -- HttpRequestObject\
+|---- + -- controllers\
+|-----| ---- + -- factory\
+|------------| ---- + -- User\
+|------------| ---- + -- Beer\
+|------------| ---- + -- Tip\
+|-----| ---- + -- http-mapper\
+|------------| ---- + -- User\
+|------------| ---- + -- Beer\
+|-----| ---- + -- repository\
+|------------| ---- + -- User\
+|------------| ---- + -- Beer\
++-- view\
+|---- + -- pages\
+|---- + -- containers\
+|---- + -- components\
++-- store\
++-- utils\
++-- assets\
++---- + -- png\
++---- + -- videos\
++---- + -- svg\
++-- config\
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Prestar atenção
 
-### Advanced Configuration
+- pipe
+- Maybe
+- promisify
+- objectToArray
+- arrayRoObject
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#######################
 
-### Deployment
+## Modeling
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Store:
 
-### `npm run build` fails to minify
+- beers (beersList, selectedBeer, doLoadBeers)
+- dashboard (beerOfMonth, brewersTips, doLoad)
+- shoppingCart (products, buyHistory, doBuy)
+- user (token, name, email, doeLogin, doLogout)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Models
+
+- beer
