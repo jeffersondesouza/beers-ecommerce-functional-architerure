@@ -7,6 +7,11 @@ const addProduct = (payload): ActionType => ({
   payload
 });
 
+const updateProduct = (payload): ActionType => ({
+  type: Types.UPDATE_PRODUCT,
+  payload
+});
+
 const removeProduct = (id): ActionType => ({
   type: Types.REMOVE_PRODUCT,
   payload: id
@@ -39,6 +44,7 @@ const buyFailure = (error: { msg: string }): Action => ({
 
 export default {
   addProduct,
+  updateProduct,
   removeProduct,
   increaseProduct,
   decreaseProduct,

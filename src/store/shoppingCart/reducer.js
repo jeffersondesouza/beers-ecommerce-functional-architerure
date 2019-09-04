@@ -25,7 +25,7 @@ const addProductsState = (state, action) => {
 
 const reducer = (state: Object = INITIAL_STATE, action: Object) => {
   switch (action.type) {
-    case Types.ADD_PRODUCT:
+    case Types.UPDATE_PRODUCT:
       return {
         ...state,
         products: addProductsState(state, action)
