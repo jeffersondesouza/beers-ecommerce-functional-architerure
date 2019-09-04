@@ -15,12 +15,12 @@ const loadDashboardFailure = error => ({
   payload: error
 });
 
-const setBeerOfMonth = beer => ({
+const updateBeerOfMonth = beer => ({
   type: Types.SET_BEER_OF_MONTH,
   payload: beer
 });
 
-const setTip = ({ id, msg }) => ({
+const updateTip = ({ id, msg }) => ({
   type: Types.SET_TIP,
   payload: { id, msg }
 });
@@ -29,6 +29,6 @@ export default {
   loadDashboardRequest,
   loadDashboardSuccess,
   loadDashboardFailure,
-  setBeerOfMonth,
-  setTip
+  updateBeerOfMonth,
+  updateTip
 };

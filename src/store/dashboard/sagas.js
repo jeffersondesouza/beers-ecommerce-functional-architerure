@@ -22,11 +22,11 @@ function* loadDashboard() {
     yield put(action.loadDashboardSuccess());
 
     if (beer) {
-      yield put(action.setBeerOfMonth(beer));
+      yield put(action.updateBeerOfMonth(beer));
     }
 
     if (tip) {
-      yield put(action.setTip(tip));
+      yield put(action.updateTip(tip));
     }
   } catch (error) {
     // eslint-disable-next-line no-console
